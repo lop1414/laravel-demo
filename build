@@ -1,0 +1,8 @@
+#首先，通过 Composer 安装 Laravel 安装器
+composer global require "laravel/installer"
+
+#创建 Laravel 应用 Demo
+laravel new demo
+
+
+
