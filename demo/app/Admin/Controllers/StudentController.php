@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Model\Student;
+use App\Model\Classroom;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -28,7 +29,8 @@ class StudentController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
-        $grid->column('classroom_id', __('Classroom id'));
+        $grid->column('classroom.name', '班级');
+        $grid->column('info.age', '年龄');
         $grid->column('create_at', __('Create at'));
         $grid->column('update_at', __('Update at'));
 
@@ -47,7 +49,17 @@ class StudentController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
-        $show->field('classroom_id', __('Classroom id'));
+        $show->classroom('班级', function($classroom){
+            $classroom->id();
+            $classroom->name();
+        });
+        $show->info('信息', function($info){
+            $info->age();
+        });
+        $show->courses('课程', function($course){
+            $course->id();
+            $course->name();
+        });
         $show->field('create_at', __('Create at'));
         $show->field('update_at', __('Update at'));
 
@@ -64,7 +76,10 @@ class StudentController extends AdminController
         $form = new Form(new Student);
 
         $form->text('name', __('Name'));
-        $form->number('classroom_id', __('Classroom id'));
+        $form->select('classroom_id', '班级')->options(function(){
+            return Classroom::all()->pluck('name' , 'id')->toArray();
+        });
+        $form->text('info.age', '年龄');
 
         return $form;
     }

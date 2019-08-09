@@ -7,6 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Encore\Admin\Widgets\Table;
 
 class ClassroomController extends AdminController
 {
@@ -27,7 +28,20 @@ class ClassroomController extends AdminController
         $grid = new Grid(new Classroom);
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('name', __('Name'))->expand(function($model){
+            //展开显示学生
+            $students = $model->students->map(function($student){
+                return [
+                    $student->id,
+                    $student->name,
+                    $student->info->age,
+                ];
+            });
+            return new Table(['学生ID', '名称', '年龄'], $students->toArray());
+        });
+        $grid->column('count', '人数')->display(function(){
+            return $this->students()->count();
+        });
         $grid->column('create_at', __('Create at'));
         $grid->column('update_at', __('Update at'));
 
@@ -46,6 +60,11 @@ class ClassroomController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
+        $show->students('学生', function($student){
+            $student->id();
+            $student->name();
+            $student->info('信息')->age('年龄');
+        });
         $show->field('create_at', __('Create at'));
         $show->field('update_at', __('Update at'));
 
