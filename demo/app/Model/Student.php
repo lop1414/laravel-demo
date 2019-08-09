@@ -46,6 +46,22 @@ class Student extends Model
      */
     public function info()
     {
-        return $this->hasOne('App\StudentInfo', 'student_id', 'id');
+        return $this->hasOne('App\Model\StudentInfo', 'student_id', 'id');
+    }
+
+    /**
+     * 关联班级模型 多对一
+     */
+    public function classroom()
+    {
+        return $this->belongsTo('App\Model\Classroom', 'classroom_id', 'id');
+    }
+
+    /**
+     * 关联课程模型 多对多
+     */
+    public function courses()
+    {
+        return $this->belongsToMany('App\Model\Course', 'student_course');
     }
 }

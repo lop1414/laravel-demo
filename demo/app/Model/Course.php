@@ -39,4 +39,12 @@ class Course extends Model
      */
     const CREATED_AT = 'create_at';
     const UPDATED_AT = 'update_at';
+
+    /**
+     * 关联学生模型 多对多
+     */
+    public function students()
+    {
+        return $this->belongsToMany('App\Model\Student', 'student_course');
+    }
 }

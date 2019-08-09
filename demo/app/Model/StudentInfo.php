@@ -18,7 +18,7 @@ class StudentInfo extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'sid';
+    protected $primaryKey = 'student_id';
 
     /**
      * 表明模型是否应该被打上时间戳
@@ -45,6 +45,6 @@ class StudentInfo extends Model
      */
     public function student()
     {
-        return $this->belongsTo('App\Student','student_id', 'id');
+        return $this->belongsTo('App\Model\Student','student_id', 'id');
     }
 }
