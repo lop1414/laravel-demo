@@ -1,8 +1,29 @@
+[创建Laravel应用]
 #首先，通过 Composer 安装 Laravel 安装器
 composer global require "laravel/installer"
 
 #创建 Laravel 应用 Demo
 laravel new demo
 
+#创建后，需修改 .env 文件数据库配置
+#至此，Laravel应用创建完毕
 
 
+
+
+
+
+[创建Laravel-admin]
+#应用目录下， composer 引入 Laravel-admin
+composer require encore/laravel-admin
+
+#通过 artisan 命令发布资源
+php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
+
+#这里需要设置 AppServiceProvider 默认字符串长度
+#避免后面安装报错，参考链接 https://github.com/z-song/laravel-admin/issues/1541
+
+#执行安装命令
+php artisan admin:install
+
+#至此，Laravel-admin安装完成
