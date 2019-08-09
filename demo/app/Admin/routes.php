@@ -15,5 +15,6 @@ Route::group([
     $router->resource('students', StudentController::class);
     $router->resource('student-infos', StudentInfoController::class);
     $router->resource('classrooms', ClassroomController::class);
+    $router->resource('courses', CourseController::class);
 
 });
