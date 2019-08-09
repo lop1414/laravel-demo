@@ -42,3 +42,42 @@ CREATE TABLE `student_course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='学生选课表';
 
 
+
+-- ----------------------------
+-- Records of classroom
+-- ----------------------------
+INSERT INTO `classroom` VALUES ('1', '一班', '0', '0');
+INSERT INTO `classroom` VALUES ('2', '二班', '0', '0');
+INSERT INTO `classroom` VALUES ('3', '三班', '0', '0');
+
+-- ----------------------------
+-- Records of course
+-- ----------------------------
+INSERT INTO `course` VALUES ('1', '语文', '0', '0');
+INSERT INTO `course` VALUES ('2', '数学', '0', '0');
+INSERT INTO `course` VALUES ('3', '英语', '0', '0');
+
+-- ----------------------------
+-- Records of student
+-- ----------------------------
+INSERT INTO `student` VALUES ('1', '张三', '1', '0', '0');
+INSERT INTO `student` VALUES ('2', '李四', '2', '0', '0');
+INSERT INTO `student` VALUES ('3', '王五', '1', '0', '0');
+INSERT INTO `student` VALUES ('4', '赵六', '2', '0', '0');
+
+-- ----------------------------
+-- Records of student_course
+-- ----------------------------
+INSERT INTO `student_course` VALUES ('1', '2');
+INSERT INTO `student_course` VALUES ('1', '3');
+INSERT INTO `student_course` VALUES ('2', '1');
+INSERT INTO `student_course` VALUES ('2', '3');
+INSERT INTO `student_course` VALUES ('3', '3');
+
+-- ----------------------------
+-- Records of student_info
+-- ----------------------------
+INSERT INTO `student_info` VALUES ('1', '18', '0', '0');
+INSERT INTO `student_info` VALUES ('2', '19', '0', '0');
+INSERT INTO `student_info` VALUES ('3', '18', '0', '0');
+INSERT INTO `student_info` VALUES ('4', '20', '0', '0');
