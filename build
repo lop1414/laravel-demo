@@ -27,3 +27,22 @@ php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
 php artisan admin:install
 
 #至此，Laravel-admin安装完成
+
+
+
+
+
+
+[创建 model]
+php artisan make:model Model/Student
+php artisan make:model Model/StudentInfo
+php artisan make:model Model/Classroom
+php artisan make:model Model/Course
+
+
+[创建后台控制器]
+php artisan admin:make StudentController --model=App\Model\Student
+php artisan admin:make StudentInfoController --model=App\Model\StudentInfo
+php artisan admin:make ClassroomController --model=App\Model\Classroom
+php artisan admin:make CourseController --model=App\Model\Course
+
