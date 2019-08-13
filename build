@@ -46,3 +46,22 @@ php artisan admin:make StudentInfoController --model=App\Model\StudentInfo
 php artisan admin:make ClassroomController --model=App\Model\Classroom
 php artisan admin:make CourseController --model=App\Model\Course
 
+
+
+
+
+
+[安装 Passport]
+#这里需要对random_compat进行降级, 不然安装passport会摆错
+composer require paragonie/random_compat=~2.0
+composer require laravel/passport=~4.0
+
+#执行迁移命令
+php artisan migrate
+
+#执行安装命令
+php artisan passport:install
+
+#创建 Passport Client
+php artisan passport:client
+
