@@ -24,4 +24,9 @@ Route::post('register', 'Api\PassportController@register');
 //需要认证的资源Api组
 Route::group(['middleware' => 'auth:api'], function() {
     Route::any('get-details', 'Api\PassportController@getDetails');
+
+    Route::prefix('student')->group(function(){
+        Route::get('select', 'Api\StudentController@select');
+    });
+
 });
